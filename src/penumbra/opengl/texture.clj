@@ -123,7 +123,8 @@
      (or= type Integer Integer/TYPE) :int
      (or= type Float Float/TYPE)     :float
      (or= type Byte Byte/TYPE)       :unsigned-byte
-     :else                           (throw (Exception. "Don't recognize type")))))
+     (or= type Long Long/TYPE )      :long
+     :else                           (throw (ex-info "Don't recognize type" {:type type :s s})))))
 
 (defn- create-array [size-or-seq type]
   (cond

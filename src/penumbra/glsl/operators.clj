@@ -206,7 +206,18 @@
             (list '<- (list '-> :frag-data (list 'nth idx)) (typecast-float4 e)))
           (indexed results))))
 
+;;minor change to get this to work, holy wow.
 (defn- wrap-and-prepend
+  "Defines -coord and -dim, and applies prepend-index"
+  [x]
+  (list
+   '(do
+      (declare (varying #^{:float2 true :tag :float2} -coord))
+      (declare (uniform #^{:float2 true :tag :float2} -dim))
+      (declare (uniform #^{:float2 true :tag :float2} -bounds)))
+   (-> (list 'defn 'void 'main [] (-> x prepend-index)) prepend-lighting)))             
+
+#_(defn- wrap-and-prepend
   "Defines -coord and -dim, and applies prepend-index"
   [x]
   (list
@@ -215,6 +226,7 @@
       (declare (uniform #^:float2 -dim))
       (declare (uniform #^:float2 -bounds)))
    (-> (list 'defn 'void 'main [] (-> x prepend-index)) prepend-lighting)))             
+
 
 (defn- create-operator
   ([body]

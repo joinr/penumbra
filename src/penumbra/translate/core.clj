@@ -268,6 +268,8 @@
   [var type x]
   (tree-map #(if (= var %) (add-meta % :tag type)) x))
 
+;;somewhere along the way, (-coord -dim -bounds) are
+;;losing their tags, assumably :float2.
 (defn infer-types
   "Repeatedly applies inspect-exprs and tag-var until everything is typed"
   [x]

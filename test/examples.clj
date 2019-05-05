@@ -9,9 +9,9 @@
 (ns examples
   (:use [clojure.test])
   (:require
-    ;;[example.app.async :as async]
-    ;;[example.app.switch :as switch]
-    ;;[example.app.nested :as nested]
+    ;[example.app.async :as async]
+    [example.app.switch :as switch]
+    [example.app.nested :as nested]
     [example.opengl.text :as text]
     [example.opengl.gears :as gears]
     [example.opengl.sierpinski :as sierpinski]
@@ -28,7 +28,7 @@
     [example.gpgpu.fluid :as fluid]))
 
 (deftest run
-  '(testing "Async"
+  #_'(testing "Async"
     (async/start))
   '(testing "Switch"
     (switch/start))

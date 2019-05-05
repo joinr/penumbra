@@ -21,7 +21,11 @@
   #^{:author "Stephen C. Gilardi",
     :doc "def.clj provides variants of def that make including doc strings and
 making private definitions more succinct."} 
-  penumbra.def)
+  penumbra.def
+  ;;inserted here, because it seems to be called everywhere.
+  ;;this is a lame hack, but since cantor is no longer maintained,
+  ;;I'm just splicing in...
+  (:require [penumbra.cantorpatch]))
 
 
 ;;added by tom to account for implicitly dynamic vars...
